@@ -1,0 +1,30 @@
+# Calculates required commits for today based on image.text in repo and commits specified times
+name: Draw
+
+# Controls when the workflow will run
+on:
+  push: {}
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  
+jobs:
+  draw:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-python@v4
+      with:
+        python-version: '3.10' 
+    - name: Generate Docs
+      run: python gen_docs.py
+      working-directory: tools
+
+    - name: Commit Docs
+      run: |
+        git add -v readme.md
+        git commit -m '[AUTOMATED] readme.md' -- readme.md
+        if ! git diff --quiet HEAD origin/master -- readme.md; then
+          git push
+        fi
