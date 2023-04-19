@@ -25,6 +25,8 @@ jobs:
 
     - name: Commit Docs
       run: |
+        git config --global user.email "noreply@github.com"
+        git config --global user.name "Automated"
         git add -v readme.md
         git commit -m '[AUTOMATED] readme.md' -- readme.md
         if ! git diff --quiet HEAD origin/master -- readme.md; then
