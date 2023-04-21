@@ -27,10 +27,11 @@ jobs:
       run: |
         git config --global user.email "noreply@github.com"
         git config --global user.name "Automated"
-        if [ -n "$(git status --porcelain)"
+        if [ -n "$(git status --porcelain)" ]; then
           git add -v readme.md
           git commit -m '[AUTOMATED] readme.md' -- readme.md
         fi 
+
         if ! git diff --quiet HEAD origin/master -- readme.md; then
           git push
         fi
