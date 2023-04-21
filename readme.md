@@ -48,7 +48,7 @@ For example running `tvarsify example.tf`
 ```terraform
 resource "aws_security_group" "sql_security_group" {
   description = "Security group for SQL Servers running on EC2"
-  vpc_id      = 122433840
+  vpc_id      = 1234567890
   tags        = ["app", "database"]
   name_prefix = var.prefix
 }
@@ -57,6 +57,7 @@ locals {
   some_string = "22"
   ports        = [22, 3389]
 }
+
 ```
 <!-- END_EXAMPLE_INPUT -->
 ---
@@ -102,7 +103,7 @@ variable "sql_security_group_tags" {
 
 variable "sql_security_group_vpc_id" {
   type    = string
-  default = 122433840
+  default = 1234567890
 }
 ```
 
@@ -117,7 +118,7 @@ locals_ports                   = [22, 3389]
 locals_some_string             = "22"
 sql_security_group_description = "Security group for SQL Servers running on EC2"
 sql_security_group_tags        = ["app", "database"]
-sql_security_group_vpc_id      = 122433840
+sql_security_group_vpc_id      = 1234567890
 
 ```
 
