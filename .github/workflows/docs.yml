@@ -1,5 +1,5 @@
 # Calculates required commits for today based on image.text in repo and commits specified times
-name: Draw
+name: GenDocs
 
 # Controls when the workflow will run
 on:
